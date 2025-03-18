@@ -1,0 +1,37 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\user\\Documents\\ASP.NET Core\\Asp.Net Blog Platform\\myapp\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{6D275F6F-AEAD-E531-D3D7-DD3DC3888BC7}|myapp.csproj|c:\\users\\user\\documents\\asp.net core\\asp.net blog platform\\myapp\\modules\\user\\services\\tokenservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6D275F6F-AEAD-E531-D3D7-DD3DC3888BC7}|myapp.csproj|solutionrelative:modules\\user\\services\\tokenservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "TokenService.cs",
+              "DocumentMoniker": "C:\\Users\\user\\Documents\\ASP.NET Core\\Asp.Net Blog Platform\\myapp\\Modules\\User\\Services\\TokenService.cs",
+              "RelativeDocumentMoniker": "Modules\\User\\Services\\TokenService.cs",
+              "ToolTip": "C:\\Users\\user\\Documents\\ASP.NET Core\\Asp.Net Blog Platform\\myapp\\Modules\\User\\Services\\TokenService.cs",
+              "RelativeToolTip": "Modules\\User\\Services\\TokenService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAMAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-17T09:12:05.787Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
