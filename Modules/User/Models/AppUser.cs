@@ -8,7 +8,7 @@ namespace myapp.Modules.User.Models
 {
     public class AppUser : IdentityUser
     {
-        public string OtpCode { get; set; }
+        public string? OtpCode { get; set; }
         public DateTime? OtpExpiresAt { get; set; }
         public bool IsVerified { get; set; } = false;
     }

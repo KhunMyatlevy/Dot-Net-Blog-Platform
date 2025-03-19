@@ -149,3 +149,4 @@ C:\Users\user\Documents\ASP.NET Core\Asp.Net Blog Platform\myapp\bin\Debug\net8.
 C:\Users\user\Documents\ASP.NET Core\Asp.Net Blog Platform\myapp\obj\Debug\net8.0\staticwebassets.build.endpoints.json
 C:\Users\user\Documents\ASP.NET Core\Asp.Net Blog Platform\myapp\obj\Debug\net8.0\staticwebassets\msbuild.myapp.Microsoft.AspNetCore.StaticWebAssetEndpoints.props
 C:\Users\user\Documents\ASP.NET Core\Asp.Net Blog Platform\myapp\bin\Debug\net8.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+C:\Users\user\Documents\ASP.NET Core\Asp.Net Blog Platform\myapp\obj\Debug\net8.0\myapp.sourcelink.json
