@@ -24,7 +24,7 @@ namespace myapp.Modules.User.Services
 
             string encryptedEmail = _encryptionService.EncryptData(appUser.Email);
             string encryptedUserName = _encryptionService.EncryptData(appUser.UserName);
-            string encryptedUserId = _encryptionService.EncryptData(appUser.Id.ToString());
+            string encryptedUserId = _encryptionService.EncryptData(appUser.Id);
 
 
             var claims = new List<Claim>

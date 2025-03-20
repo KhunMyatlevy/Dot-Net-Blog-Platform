@@ -5,6 +5,7 @@ using myapp.Modules.User.Models;
 using myapp.Modules.User.Interface;
 using myapp.Modules.User.DTOs;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Authorization;
 
 
 
@@ -112,5 +113,41 @@ namespace myapp.Modules.User.Controller
 
             return Ok(new { token });
         }
+        [HttpPost("login")]
+        public async Task<IActionResult> Login ([FromBody] LoginDto loginDto)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            var existingUser = await _usermanager.FindByEmailAsync(loginDto.Email);
+
+            if (existingUser == null)
+            {
+                return BadRequest("User doesn't exist.");
+            }
+
+            var token = _tokenService.CreateToken(existingUser);
+
+            return Ok(new { token });
+        }
+
+        [HttpGet("getalluser")]
+        public async Task<IActionResult> GetAll()
+        {
+            var users = await _usermanager.Users.ToListAsync();
+
+            return Ok(users);
+
+        }
+
+        [HttpPost("logout")]
+        [Authorize]
+        public IActionResult Logout()
+        {
+            return Ok(new { message = "Logged out successfully." });
+        }
+
     }
 }

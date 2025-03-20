@@ -1,6 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using myapp.Modules.User.Models;
+using myapp.Modules.Post.Models;
 
 namespace myapp.Data
 {
@@ -11,6 +12,8 @@ namespace myapp.Data
         {
 
         }
+
+        public DbSet<UserPost> Posts { get; set; }
 
     }
 
