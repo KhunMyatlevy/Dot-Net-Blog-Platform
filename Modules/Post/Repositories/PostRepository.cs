@@ -27,6 +27,26 @@ namespace myapp.Modules.Post.Repositories
             return post;
     }
 
+        public async Task<UserPost> DeleteByIdAsync(int id)
+        {
+            var existingPost = await _context.Posts.FirstOrDefaultAsync(u => u.Id == id);
+
+            if (existingPost == null)
+            {
+                return null;
+            }
+
+            _context.Posts.Remove(existingPost);
+            await _context.SaveChangesAsync();
+            return existingPost;
+        }
+
+        public async Task<List<UserPost>> GetAllAsync()
+        {
+            return await _context.Posts.ToListAsync();
+        }
+
+
         public async Task<UserPost> GetByIdAsync(int id)
         {
             var post = await _context.Posts.FirstOrDefaultAsync(u => u.Id == id);
@@ -35,6 +55,22 @@ namespace myapp.Modules.Post.Repositories
                 return null;
             }
             return post;
+        }
+
+        public async Task<UserPost> UpdateByIdAsync(UpdatePostDto updatePostDto, int id)
+        {
+            var existingPost = await _context.Posts.FirstOrDefaultAsync(u => u.Id == id);
+
+            if (existingPost == null)
+            {
+                return null;
+            }
+
+            existingPost.Title = updatePostDto.Title;
+            existingPost.Content = updatePostDto.Content;
+            await _context.SaveChangesAsync();
+
+            return existingPost;
         }
     }
 }

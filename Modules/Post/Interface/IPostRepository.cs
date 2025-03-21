@@ -11,5 +11,8 @@ namespace myapp.Modules.Post.Interface
     {
         Task<UserPost> CreateAsync (UserPost post);
         Task<UserPost> GetByIdAsync (int id);
+        Task<List<UserPost>> GetAllAsync ();
+        Task<UserPost> UpdateByIdAsync (UpdatePostDto updatePostDto, int id);
+        Task<UserPost> DeleteByIdAsync (int id);
     }
 }

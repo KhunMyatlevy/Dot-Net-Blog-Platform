@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace myapp.Modules.Post.DTOs
 {
-    public class CreatePostDto
+    public class UpdatePostDto
     {
         [Required]
         [StringLength(200, ErrorMessage = "Title cannot be longer than 200 characters.")]
@@ -14,6 +14,5 @@ namespace myapp.Modules.Post.DTOs
 
         [Required]
         public string Content { get; set; }
-
     }
 }

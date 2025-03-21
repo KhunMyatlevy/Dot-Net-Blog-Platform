@@ -9,6 +9,8 @@ using myapp.Modules.User.Services;
 using Microsoft.OpenApi.Models;
 using myapp.Modules.Post.Interface;
 using myapp.Modules.Post.Repositories;
+using myapp.Modules.Comment.Interface;
+using myapp.Modules.Comment.Repositories;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -93,6 +95,7 @@ builder.Services.AddScoped<IOTP, OTPService>();
 builder.Services.AddScoped<ITokenService, TokenService>();
 builder.Services.AddScoped<IEncryptionService, EncryptionService>();
 builder.Services.AddScoped<IPostRepository, PostRepository>();
+builder.Services.AddScoped<ICommentRepository, CommentRepository>();
 
 var app = builder.Build();
 

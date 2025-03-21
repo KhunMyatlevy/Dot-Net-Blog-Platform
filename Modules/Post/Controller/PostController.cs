@@ -2,6 +2,7 @@ using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using myapp.Data;
 using myapp.Modules.Post.DTOs;
 using myapp.Modules.Post.Interface;
@@ -50,12 +51,12 @@ namespace myapp.Modules.Post.Controller
 
             string decryptedUserId = _encryptionService.DecryptData(encryptedUserId);
 
-             var post = new UserPost
+            var post = new UserPost
             {
                 Title = createPostDto.Title,
                 Content = createPostDto.Content,
-                CreatedAt = createPostDto.CreatedAt,
-                UserId = decryptedUserId, // Set the user ID
+                CreatedAt = DateTime.UtcNow,
+                UserId = decryptedUserId,
             };
 
             var createdPost = await _postRepo.CreateAsync(post);
@@ -78,5 +79,58 @@ namespace myapp.Modules.Post.Controller
 
             return Ok(post);
         }
+
+        [HttpGet]
+        [Authorize]
+        public async Task<IActionResult> GetAll ()
+        {
+            var posts = await _postRepo.GetAllAsync();
+
+            if (!posts.Any())
+            {
+                return BadRequest("No posts available");
+            }
+
+            return Ok(posts);
+        }
+
+        [HttpPut("{id:int}")]
+        [Authorize]
+        public async Task<IActionResult> UpdateById([FromBody] UpdatePostDto updatePostDto, [FromRoute] int id)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState); // Return validation errors
+            }
+
+            var updatedpost = await _postRepo.UpdateByIdAsync(updatePostDto, id);
+
+            if (updatedpost == null)
+            {
+                return NotFound("Post not found.");
+            }
+
+            return Ok(updatedpost);
+        }
+
+        [HttpDelete("{id:int}")]
+        [Authorize]
+        public async Task<IActionResult> DeleteById (int id)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest("Invlaid id");
+            }
+
+            var existingPost = await _postRepo.DeleteByIdAsync(id);
+
+            if (existingPost == null)
+            {
+                return NotFound();
+            }
+
+            return NoContent();
+        }
+
     }
 }
