@@ -11,5 +11,8 @@ namespace myapp.Modules.Comment.Interface
     {
         Task<UserComment>Create(UserComment userComment);
         Task<List<UserComment>>GetAllAsync ();
+        Task<UserComment> GetById (int id);
+        Task<UserComment> UpdateById (UpdateCommentDto updateCommentDto, int id);
+        Task<UserComment> DeleteById(int id);
     }
 }

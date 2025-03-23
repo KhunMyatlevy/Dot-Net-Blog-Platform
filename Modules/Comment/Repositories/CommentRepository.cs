@@ -25,9 +25,44 @@ namespace myapp.Modules.Comment.Repositories
             return userComment;
         }
 
+        public async Task<UserComment> DeleteById(int id)
+        {
+            var existing_comment = await _context.Comments.FirstOrDefaultAsync(u => u.Id == id);
+            if (existing_comment == null)
+            {
+                return null;
+            }
+
+            _context.Comments.Remove(existing_comment);
+            await _context.SaveChangesAsync();
+            return existing_comment;
+        }
+
         public async Task<List<UserComment>> GetAllAsync()
         {
             return await _context.Comments.ToListAsync();
         }
+
+        public async Task<UserComment> GetById(int id)
+        {
+            return await _context.Comments.FirstOrDefaultAsync(u => u.Id == id);
+        }
+
+        public async Task<UserComment> UpdateById(UpdateCommentDto updateCommentDto, int id)
+        {
+            var existing_comment = await _context.Comments.FirstOrDefaultAsync(u => u.Id == id);
+
+            if (existing_comment == null)
+            {
+                return null;
+            }
+
+            existing_comment.Content = updateCommentDto.Content;
+            await _context.SaveChangesAsync();
+
+            return existing_comment;
+        }
+
+
     }
 }

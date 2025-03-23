@@ -78,5 +78,61 @@ namespace myapp.Modules.Comment.Controller
 
             return Ok(comments);
         }
+
+        [HttpGet("{id:int}")]
+        [Authorize]
+        public async Task<IActionResult> GeyById(int id)
+        {
+            var comment = await _commentRepo.GetById(id);
+
+            if (comment == null)
+            {
+                return BadRequest("Invalid Id");
+            }
+
+            return Ok(comment);
+        }
+
+        
+        [HttpPut("{id:int}")]
+        [Authorize]
+        public async Task<IActionResult> UpdateById ([FromBody] UpdateCommentDto updateCommentDto, int id)
+        {
+
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState); // Return validation errors
+            }
+
+            var updatedcomment = await _commentRepo.UpdateById(updateCommentDto, id);
+
+            if(updatedcomment == null)
+            {
+                return NotFound("Comment Not found.");
+            }
+
+            return Ok(updatedcomment);
+
+        }
+
+        [HttpDelete("{id:int}")]
+        [Authorize]
+        public async Task<IActionResult> DeleteById (int id)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState); // Return validation errors
+            }
+            var existing_comment = await _commentRepo.DeleteById(id);
+
+            if (existing_comment == null)
+            {
+                return NotFound("Comment not found.");
+            }
+
+            return Ok("Comment deleted successfully.");
+
+
+        }
     }
 }
