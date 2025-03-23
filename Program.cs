@@ -11,6 +11,8 @@ using myapp.Modules.Post.Interface;
 using myapp.Modules.Post.Repositories;
 using myapp.Modules.Comment.Interface;
 using myapp.Modules.Comment.Repositories;
+using myapp.Modules.Like.Interface;
+using myapp.Modules.Like.Repositories;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -96,6 +98,7 @@ builder.Services.AddScoped<ITokenService, TokenService>();
 builder.Services.AddScoped<IEncryptionService, EncryptionService>();
 builder.Services.AddScoped<IPostRepository, PostRepository>();
 builder.Services.AddScoped<ICommentRepository, CommentRepository>();
+builder.Services.AddScoped<ILikeRepository, LikeRepository>();
 
 var app = builder.Build();
 
